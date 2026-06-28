@@ -3,6 +3,8 @@
 import { Search as SearchIcon } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import { MOCK_USERS } from "@/lib/mock-data";
+import PostMedia from "@/components/media/PostMedia";
+import { mediaBackgroundStyle } from "@/lib/media-style";
 
 export default function SearchContent() {
   const { posts, searchQuery, setSearchQuery } = useApp();
@@ -54,7 +56,7 @@ export default function SearchContent() {
                 >
                   <div
                     className="h-10 w-10 rounded-full"
-                    style={{ background: user.avatarUrl }}
+                    style={mediaBackgroundStyle(user.avatarUrl)}
                   />
                   <div>
                     <p className="text-sm font-semibold">{user.nickname}</p>
@@ -74,10 +76,13 @@ export default function SearchContent() {
             <div className="grid grid-cols-3 gap-2">
               {filteredPosts.map((post) => (
                 <div key={post.id} className="space-y-1">
-                  <div
-                    className="aspect-square rounded-lg"
-                    style={{ background: post.thumbnailUrl }}
-                  />
+                  <div className="relative aspect-square overflow-hidden rounded-lg">
+                    <PostMedia
+                      post={post}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      ariaLabel={post.caption}
+                    />
+                  </div>
                   <p className="truncate text-[10px] text-neutral-600">
                     {post.nickname}
                   </p>

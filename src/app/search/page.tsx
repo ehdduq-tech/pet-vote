@@ -1,10 +1,13 @@
 import AppShell from "@/components/layout/AppShell";
+import RequireAuth from "@/components/auth/RequireAuth";
 import SearchContent from "@/components/search/SearchContent";
 
 export default function SearchPage() {
   return (
-    <AppShell activePath="/search">
-      <SearchContent />
-    </AppShell>
+    <RequireAuth>
+      <AppShell activePath="/search">
+        <SearchContent />
+      </AppShell>
+    </RequireAuth>
   );
 }

@@ -15,6 +15,22 @@ export type Post = {
   isFollowing?: boolean;
 };
 
+export type Comment = {
+  id: string;
+  postId: string;
+  nickname: string;
+  text: string;
+  createdAt: string;
+};
+
+export type ChatMessage = {
+  id: string;
+  userId: string;
+  text: string;
+  isMine: boolean;
+  createdAt: string;
+};
+
 export type User = {
   id: string;
   nickname: string;
@@ -28,6 +44,8 @@ export type User = {
 export type RankingPeriod = {
   id: string;
   title: string;
+  year: number;
+  round: number;
   deadline: string;
   posts: Post[];
 };
@@ -38,4 +56,26 @@ export type NavItem = {
   iconName: "home" | "ranking" | "add" | "search" | "profile";
 };
 
-export type ProfileTab = "uploaded" | "challenged" | "bookmarked" | "draft";
+export type ProfileTab =
+  | "uploaded"
+  | "ranking"
+  | "challenged"
+  | "bookmarked"
+  | "draft"
+  | "family";
+
+export type FamilyPet = {
+  id: string;
+  name: string;
+  breed: string;
+  gender: string;
+  age: string;
+  notes: string;
+  photoUrl: string;
+};
+
+export type ProfilePost = Post & {
+  rank?: number;
+};
+
+export type PostModalType = "message" | "comment" | "share" | "report";

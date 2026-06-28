@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "우리 막내 자랑하기",
+  title: "PET PAW",
   description: "반려동물 사진 투표 SNS",
 };
 
@@ -28,8 +28,10 @@ export default function RootLayout({
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="h-full">
-        <AppProvider>{children}</AppProvider>
+      <body className="m-0 h-dvh overflow-hidden p-0">
+        <AppProvider>
+          <div className="h-full w-full">{children}</div>
+        </AppProvider>
       </body>
     </html>
   );

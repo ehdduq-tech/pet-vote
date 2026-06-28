@@ -12,13 +12,25 @@ type AppShellProps = {
 export default function AppShell({
   children,
   activePath,
-  showFollowing = true,
+  showFollowing = false,
   mainClassName = "",
 }: AppShellProps) {
+  if (showFollowing) {
+    return (
+      <div className="app-shell--home mx-auto h-full min-h-dvh w-full max-w-[470px] bg-white">
+        <AppHeader />
+        <FollowingStrip />
+        <main className={`app-main overflow-hidden ${mainClassName}`}>
+          {children}
+        </main>
+        <BottomNav activePath={activePath} />
+      </div>
+    );
+  }
+
   return (
-    <div className="app-shell mx-auto w-full max-w-[470px] bg-white">
+    <div className="app-shell--compact mx-auto h-full min-h-dvh w-full max-w-[470px] bg-white">
       <AppHeader />
-      {showFollowing && <FollowingStrip />}
       <main className={`app-main overflow-hidden ${mainClassName}`}>
         {children}
       </main>

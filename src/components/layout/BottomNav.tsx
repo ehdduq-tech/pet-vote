@@ -31,7 +31,7 @@ type BottomNavProps = {
 export default function BottomNav({ activePath }: BottomNavProps) {
   return (
     <nav
-      className="app-row flex items-center justify-around border-t border-neutral-200 bg-white px-2"
+      className="flex h-14 shrink-0 items-center justify-around border-t border-neutral-200 bg-white px-2"
       aria-label="메인 네비게이션"
     >
       {NAV_ITEMS.map(({ href, label, iconName }) => {
